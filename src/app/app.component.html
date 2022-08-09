@@ -1,0 +1,40 @@
+<div class="parent" >
+    <div class="card" *ngFor="let task of task$ | async">
+        <div *ngIf="!task.status; else elseBlock">
+            <div class="title">{{ task.title }}</div>
+            <div class = "date"> {{ task.dateCreated }}</div>
+            <p class="description">
+                {{ task.description }}
+            </p>
+            <div class="button-container">
+                <button class="button left" (click)="deleteToDo(task.id)">Delete</button>
+                <button class="button right" (click)="update(task)">Update</button>
+            </div>
+        </div>
+
+        <ng-template #elseBlock>
+            <div>
+                <div class="card">  
+                    <div>
+                        <input class="input" type="text" placeholder="Update Title" name="title" [(ngModel)]="updateCard.title">
+                    </div>
+                    <div>
+                        <input class="input" placeholder="Update Description" name="description" [(ngModel)]="updateCard.description"> 
+                    </div>
+                    <button class="button" (click)="addToDoAfterUpdate(task)">Update</button>
+                </div>         
+            </div>
+        </ng-template>
+
+    </div>
+
+    <div class="card">  
+        <div>
+            <input class="input" type="text" placeholder="Title" name="title" [(ngModel)]="currentCard.title">
+        </div>
+        <div>
+            <input class="input" placeholder="Description" name="description" [(ngModel)]="currentCard.description">
+        </div>
+        <button class="button" (click)="addToDo()">Add</button>
+    </div>
+</div>

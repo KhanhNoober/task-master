@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "task-master-a9381": {
+      "hosting": {
+        "task-master": [
+          "task-master-a9381"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "task-master-a9381"
+  }
+}
